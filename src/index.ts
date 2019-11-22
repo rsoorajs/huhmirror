@@ -306,21 +306,11 @@ function prepDownload(msg: TelegramBot.Message, match: string, isTar: boolean): 
       // Wait a second to give aria2 enough time to queue the download
       setTimeout(() => {
         // dlManager.setStatusLock(msg, sendStatusMessage);
-        dlManager.setStatusLock(msg, uriAdded);
+        dlManager.setStatusLock(msg, sendStatusMessage);
       }, 1000);
     }
   });
 
-}
-
-/**
- * 
- * Added mirror function
- * send a added mirror msg --- added by @aryanvikash
- */
-
-function uriAdded(msg: TelegramBot.Message): any{
-  msgTools.sendMessage(bot, msg, 'URI Added 😊,\nClick /copystatus to get Status.', -1);
 }
 
 /**

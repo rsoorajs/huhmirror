@@ -36,10 +36,10 @@ function setEventCallback(regexp: RegExp, regexpNoName: RegExp,
 setEventCallback(eventRegex.commandsRegex.start, eventRegex.commandsRegexNoName.start, (msg) => {
   if (msgTools.isAuthorized(msg) < 0) {
     // msgTools.sendUnauthorizedMessage(bot, msg);
-    msgTools.sendMessage(bot, msg, 'Bot is not usable outside @BhadooCloud group', -1);
+    msgTools.sendMessage(bot, msg, 'You are not authorized to use this bot here!', -1);
   } else {
     msgTools.sendMessage(bot, msg,
-                         'Welcome to @BhadooCloud Group.\n\nVisit https://t.me/BhadooCloud/39 for updates in Group.',
+                         'Welcome to The Mirroring Adda group.Happy mirroring...',
                          -1);
   }
 });
@@ -320,7 +320,7 @@ function prepDownload(msg: TelegramBot.Message, match: string, isTar: boolean): 
  */
 
 function uriAdded(msg: TelegramBot.Message): any{
-  msgTools.sendMessage(bot, msg, 'URI Added 😊,\nClick /mirrorstatus to get Status.', -1);
+  msgTools.sendMessage(bot, msg, 'URI Added 😊,\nClick /copystatus to get Status.', -1);
 }
 
 /**
@@ -462,7 +462,7 @@ function ariaOnDownloadStart(gid: string, retry: number): void {
 
     if (!statusInterval) {
       statusInterval = setInterval(updateAllStatus,
-        constants.STATUS_UPDATE_INTERVAL_MS ? constants.STATUS_UPDATE_INTERVAL_MS : 12000);
+        constants.STATUS_UPDATE_INTERVAL_MS ? constants.STATUS_UPDATE_INTERVAL_MS :12000);
     }
   } else if (retry <= 8) {
     // OnDownloadStart probably got called before prepDownload's startDownload callback. Fairly common. Retry.
@@ -604,9 +604,9 @@ function driveUploadCompleteCallback(err: string, gid: string, url: string, file
         var rawurl = constants.INDEX_DOMAIN + fileName ;
       }
       var indexurl = encodeURI(rawurl) ;
-      finalMessage = `GDrive Link: <a href='${url}'>${fileName}</a> (${fileSizeStr}) \n\nDo not Share Direct Link. \n\nTo Share Use: \n\n<a href='${indexurl}'>${fileName}</a>`;
+      finalMessage = `<b>GDrive Link</b>: <a href='${url}'>${fileName}</a> (${fileSizeStr}) \n<b>Do not Share Direct Link.</b> \n<b>To Share Use</b>: <a href='${indexurl}'>${fileName}</a>`;
     } else {
-      finalMessage = `GDrive Link: <a href='${url}'>${fileName}</a> \n\nDo not Share Direct Link. \n\nTo Share Use: \n\n<a href='${indexurl}'>${fileName}</a>`;
+      finalMessage = `<b>GDrive Link</b>: <a href='${url}'>${fileName}</a> \n<b>Do not Share Direct Link.</b> \n<b>To Share Use</b>: <a href='${indexurl}'>${fileName}</a>`;
     }
     cleanupDownload(gid, finalMessage, url);
     }
